@@ -1,0 +1,75 @@
+<div class="lab-forms-container">
+  <!-- Lipid Profile Form -->
+  <form method="POST" action="/save_lab" class="lab-form">
+    <h3>Lipid Profile</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="lipid_date">Date:</label>
+        <input type="date" id="lipid_date" name="date" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="ldl">LDL:</label>
+        <input type="number" id="ldl" name="ldl" class="form-control" step="0.1" min="0" required>
+        <small class="error-message"></small>
+      </div>
+      <div class="form-group">
+        <label for="hdl">HDL:</label>
+        <input type="number" id="hdl" name="hdl" class="form-control" step="0.1" min="0" required>
+        <small class="error-message"></small>
+      </div>
+      <div class="form-group">
+        <label for="triglyceride">Triglyceride:</label>
+        <input type="number" id="triglyceride" name="triglyceride" class="form-control" step="0.1" min="0" required>
+        <small class="error-message"></small>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+
+  <!-- HbA1c Form -->
+  <form method="POST" action="/save_lab" class="lab-form">
+    <h3>HbA1c</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="hba1c_date">Date:</label>
+        <input type="date" id="hba1c_date" name="date" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="hba1c">HbA1c:</label>
+        <input type="number" id="hba1c" name="hba1c" class="form-control" step="0.1" min="0" required>
+        <small class="error-message"></small>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+
+<script>
+  // JavaScript code for validation
+  const forms = document.querySelectorAll('.lab-form');
+
+  forms.forEach(form => {
+    const inputs = form.querySelectorAll('input[type="number"]');
+
+    inputs.forEach(input => {
+      input.addEventListener('input', function () {
+        const errorMessage = this.nextElementSibling;
+        if (this.value < 0) {
+          errorMessage.textContent = 'Please enter a non-negative value.';
+          this.setCustomValidity('Please enter a non-negative value.');
+        } else {
+          errorMessage.textContent = '';
+          this.setCustomValidity('');
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .error-message {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+  }
+</style>

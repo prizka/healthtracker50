@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Tracker Dashboard</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <div class="header-title">
+      <a href="/dashboard">Health Tracker Dashboard</a>
+    </div>
+    {% if session.get("user_id") %}
+    <div class="month-container">
+      <h3>Months</h3>
+      <div class="month-buttons">
+        {% for i in range(1, 13) %}
+          <button class="month-btn" data-month="{{ i }}" data-year="{{ current_year }}">{{ i }}</button>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <div class="header-link">
+      <a href="/register">Register</a>
+      <a href="/login">Login</a>
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="main-content">
+    {% if request.endpoint not in ['login', 'register'] %}
+    <div class="sidebar">
+      {% if session.get("user_id") %}
+      <a href="/dashboard">Home</a>
+      <a href="/profile">Profile</a>
+      <a href="/report">Laboratory Report</a>
+      <a href="/settings">Settings</a>
+      <a href="/logout">Logout</a>
+      {% endif %}
+    </div>
+    {% endif %}
+    <div class="content-wrapper">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

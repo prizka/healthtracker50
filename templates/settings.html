@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Settings
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+  <div class="settings-container">
+    <div class="settings-header">
+      <h2>Settings</h2>
+    </div>
+    <div class="settings-options">
+      <a href="{{ url_for('summary') }}" class="settings-option">
+        <i class="fas fa-clipboard-list"></i>
+        <div class="option-details">
+          <h3>Health Summary</h3>
+          <p>View or edit your health records summary</p>
+        </div>
+      </a>
+      <a href="{{ url_for('change_password') }}" class="settings-option">
+        <i class="fas fa-key"></i>
+        <div class="option-details">
+          <h3>Change Password</h3>
+          <p>Update your account password</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

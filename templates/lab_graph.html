@@ -1,0 +1,13 @@
+<div class="lab-graphs-container">
+  <div class="chart">
+    <h3>Lipid Profile</h3>
+    <canvas id="lipidChart"></canvas>
+  </div>
+  <div class="chart">
+    <h3>HbA1c Levels</h3>
+    <canvas id="hba1cChart"></canvas>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='lab_charts.js') }}"></script>

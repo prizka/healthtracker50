@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Log Your Day
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+  {% if user_name %}
+  <div class="welcome-message">
+    <i class="fas fa-heartbeat"></i> Hi, {{ user_name }}! Own your health. Log your metrics today.
+  </div>
+  {% endif %}
+  <div class="split-layout">
+    <div class="calendar-section">
+      {% include "calendar_component.html" %}
+    </div>
+    <div class="content-section">
+      <div class="details-container" id="dynamic-content">
+        {% if active_page == 'log' %}
+          {% include "vital_log.html" %}
+        {% else %}
+          {% include "logs_chart.html" %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
