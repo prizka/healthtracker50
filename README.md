@@ -125,4 +125,7 @@ The Health Tracker Dashboard is a personal health management app that allows use
 
 For additional support, please contact kelvinsupriami@hms.harvard.edu or prizka_aviliapuspa@hms.harvard.edu.
 
+## Link to the short explanatory video
+https://youtu.be/XJzgCoLOm8M
+
 This README provides an overview and guide to effectively use the Health Tracker Dashboard. For further questions and feedback, feel free to reach out. Happy tracking!
